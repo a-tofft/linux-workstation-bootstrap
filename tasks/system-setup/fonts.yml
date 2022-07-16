@@ -1,0 +1,14 @@
+---
+
+- name: software | prepare eula
+  debconf:
+    name: ttf-mscorefonts-installer
+    question: msttcorefonts/accepted-mscorefonts-eula
+    vtype: boolean
+    value: true
+
+- name: software | install fonts
+  become: true
+  apt:
+    name: ttf-mscorefonts-installer
+    state: present

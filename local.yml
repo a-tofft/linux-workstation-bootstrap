@@ -34,6 +34,10 @@
       tags: ['zsh']
       when: configure_zsh
 
+    # Install Additional Fonts
+    - import_tasks: tasks/system-setup/fonts.yml
+    - tags: ['fonts']
+
     # Setup Gnome Appearance
     - import_tasks: tasks/gnome/appearance.yml
       tags: ['gnome']
