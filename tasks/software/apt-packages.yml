@@ -1,0 +1,14 @@
+---
+- name: software | install global base apt packages
+  become: true
+  apt:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ apt_base_packages }}"
+
+- name: software | install global extra apt packages
+  become: true
+  apt:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ apt_extra_packages }}"

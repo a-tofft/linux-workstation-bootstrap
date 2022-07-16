@@ -1,0 +1,14 @@
+---
+
+- name: install hourly crontabs
+  cron:
+    state: present  
+    name: "{{ item.name }}"
+    minute: "0"
+    hour: "*"
+    day: "*"
+    month: "*"
+    weekday: "*"
+    job: "{{ item.job }}"
+    user: "{{ ansible_user }}"
+  loop: "{{ hourly_crontabs }}"

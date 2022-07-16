@@ -1,0 +1,79 @@
+# tasks to complete before running roles
+- hosts: all # Connection Local
+  vars_files:
+    - default.config.yml
+  tags: always
+  become: true
+  pre_tasks:
+
+    - name: pre-run | update package cache (debian, etc)
+      tags: always
+      apt: update_cache=yes
+      changed_when: False
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+
+
+  # Run Tasks 
+  tasks:
+
+    # ADD Repositories
+    - import_tasks: tasks/software/repositories.yml
+      tags: ['add-repos', 'extra-packages']
+
+    # Install APT Packages
+    - import_tasks: tasks/software/apt-packages.yml
+      tags: ['apt-packages']
+
+    # Install Google Chrome 
+    - import_tasks: tasks/software/google-chrome.yml
+      tags: ['software-google-chrome']
+      when: configure_google_chrome
+
+    # Install oh-my-zsh and setup
+    - import_tasks: tasks/software/zsh.yml
+      tags: ['zsh']
+      when: configure_zsh
+
+    # Setup Gnome Appearance
+    - import_tasks: tasks/gnome/appearance.yml
+      tags: ['gnome']
+
+    # Setup CronJobs
+    - import_tasks: tasks/system-setup/cron.yml
+      tags: ['cron']
+
+    # Install Flatpaks 
+    - import_tasks: tasks/software/flatpak-packages.yml
+      tags: ['flatpak-packages']
+
+    # Install SNAPS
+    - import_tasks: tasks/software/snap-packages.yml
+      tags: ['snap-packages']
+
+    # Install PIPs
+    - import_tasks: tasks/software/pip-packages.yml
+      tags: ['pip-packages']
+
+    # Cleanup Packages 
+    - import_tasks: tasks/software/packages-cleanup.yml
+      tags: ['cleanup-packages']
+
+
+
+# end of run cleanup and reporting
+- hosts: all
+  become: true
+  tasks:
+  - name: cleanup package cache (debian and ubuntu)
+    tags: always
+    apt:
+      autoclean: yes
+    changed_when: false
+    when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+
+  - name: autoremove orphan packages (debian and ubuntu)
+    tags: always
+    apt:
+      autoremove: yes
+      purge: yes
+    when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]

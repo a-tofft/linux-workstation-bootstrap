@@ -1,0 +1,12 @@
+---
+
+- name: gnome | copy wallpapers
+  copy:
+    src: "{{ item }}"
+    dest: "/usr/share/backgrounds/"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: 0644
+  with_fileglob:
+    - "files/wallpapers/*"
+

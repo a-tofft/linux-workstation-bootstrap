@@ -1,0 +1,225 @@
+---
+# used in URL of some deb packages on github
+host_arch: "amd64"
+
+# ---------------------------------------
+# Repositories to be added
+# Validate keyword can be set (default: true) to ignore SSL certs
+repository_keys:
+ - name: "https://download.docker.com/linux/ubuntu/gpg" # Docker
+   validate: false
+ - name: "https://dl-ssl.google.com/linux/linux_signing_key.pub" # Google Chrome
+   validate: false
+
+essential_repositories:
+ - name: "ppa:caffeine-developers/ppa" # For caffeine
+   validate: false
+ - name: "ppa:agornostal/ulauncher" # For ulauncher
+   validate: false
+
+ # Enable Universe Repo
+ - name: "deb http://us.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release | lower }} universe"
+ - name: "deb http://us.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release | lower }}-updates universe"
+ - name: "deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release | lower }}-security universe"
+ - name: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" # Google Chrome x86_64 repo
+
+# ---------------------------------------
+# General Settings 
+configure_airpods_pro_bluetooth_fix: false
+configure_wifi_powersave_mode: true
+wifi_powersave_mode: '2'  # disable powersave
+# https://twitter.com/dominucco/status/1410181146940411905?s=20
+# According to https://gist.github.com/jcberthon/ea8cfe278998968ba7c5a95344bc8b55
+# From the source code: wifi.powersave can have the following value:
+#
+#    NM_SETTING_WIRELESS_POWERSAVE_DEFAULT (0): use the default value
+#    NM_SETTING_WIRELESS_POWERSAVE_IGNORE (1): don't touch existing setting
+#    NM_SETTING_WIRELESS_POWERSAVE_DISABLE (2): disable powersave
+#    NM_SETTING_WIRELESS_POWERSAVE_ENABLE (3): enable powersave
+
+# ---------------------------------------
+# CronJobs 
+hourly_crontabs: 
+ - name: "Full Gnome settings backup every hour"
+   job: "dconf dump / > ~/Dropbox/Backups/gnome/dconf-settings 2>&1"
+ - name: "Backup Gnome Shell Extensions every hour"
+   job: "cp -r ~/.local/share/gnome-shell/extensions/* ~/Dropbox/Backups/gnome/shell-extensions 2>&1"
+
+
+# ---------------------------------------
+# FLATPAKS
+
+configure_flatpak: true
+flatpaks:
+  - "com.github.tchx84.Flatseal"  # Manage Flatpak permissions
+  - "org.gabmus.whatip"  # Info on your IP
+  - "com.bitwarden.desktop"  # A secure and free password manager for all of your devices
+  - "org.libreoffice.LibreOffice" # LibreOffice
+  - "org.videolan.VLC" # Playing Videos 
+  - "md.obsidian.Obsidian" # Note taking
+  - "org.remmina.Remmina" # RDP 
+  - "org.qbittorrent.qBittorrent" # Torrenting
+  - "com.meetfranz.Franz" # Messaging Platform
+  - "io.github.mimbrero.WhatsAppDesktop" # Messaging
+
+# ---------------------------------------
+# SNAPS
+configure_snap: true
+snaps:
+  - name: "spotify" # Music, flatpak com.spotify.Client is causing issues. 
+  - name: "authy"  # 2-Factor Authentication
+  - name: "code" # StudioVisualCode 
+    classic: "yes"
+  - name: "flameshot"  # Simple screenshot software
+    classic: "yes"
+  - name: "auto-cpufreq"
+# ---------------------------------------
+# BROWSER
+configure_google_chrome: true 
+
+# ---------------------------------------
+# BACKUP 
+configure_dropbox: true 
+
+# ---------------------------------------
+# SHELL 
+
+# Will download oh-my-zsh, make it default shell 
+# Will download extensions
+configure_zsh: true 
+zsh_plugins:
+ - name: zsh-syntax-highlighting
+   repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+ - name: zsh-autosuggestions
+   repo: https://github.com/zsh-users/zsh-autosuggestions.git
+
+
+# ---------------------------------------
+
+# Install aptitude packages
+apt_base_packages:
+  # - name: software-properties-common
+  #   state: present (default)
+
+  - name: apt-transport-https
+  - name: ca-certificates
+  - name: curl # Tool to transfer data from server via HTTP/FTP for example. 
+  - name: gnupg-agent
+  - name: software-properties-common
+  - name: ssh
+  - name: wget
+  - name: openssl
+  - name: dos2unix
+  - name: sed
+  - name: less
+  - name: zip
+  - name: unzip
+  - name: git
+  - name: nano
+
+
+apt_extra_packages:
+
+  # Development
+  - name: python3-setuptools
+  - name: python3-apt
+  - name: python3-pip
+  - name: python3-venv
+  - name: python3-pytest
+  - name: libpython3.9-dev
+  - name: python-is-python3
+
+
+  # Tools / Utilities
+  - name: tree # Display File Hierarchy
+  - name: jq # Format JSON output
+  - name: htop # CLI CPU Monitor Tool
+  - name: iotop # I/O bandwidth reader
+  - name: fd-find # Replace find 
+  - name: bat # replace cat 
+  - name: tldr # Like MAN 
+  - name: calibre # For managing books
+  - name: neofetch # Display System Information
+  - name: stacer # CPU/Disk/Memory/System GUI tool
+  - name: terminator # Terminal
+  - name: lsof # List of Open Files - Used to check what process use what file
+  - name: tmux # Terminal Multiplexer
+  - name: stow # Dotfiles/Symlink Management
+  - name: zsh # Shell
+  - name: youtube-dl # Downloads youtube videos
+  - name: unrar # For rar files
+  - name: pandoc # File converter, example: md to pdf
+  - name: inxi # Hardware Diagnostic Tool 
+
+  # Fonts 
+  - name: fonts-powerline # Required for oh-my-zsh
+
+  # Chat Programs 
+  - name: telegram-desktop
+
+  # Containers 
+  - name: docker.io 
+
+  # Networking Tools
+  - name: snmp # SNMP tools including snmpwalk
+  - name: net-tools # Includes ifconfig/netstat/arp and nore
+  - name: nmap # NMAP tool for port/host scanning
+  - name: traceroute # Classic Traceroute Tool
+  - name: whois # RIPE/IANA, AS/PREFIX Lookup tool
+  - name: iperf # Bandwidth Testing Tool
+  - name: wireshark 
+  - name: tshark # Wireshark CLI 
+  - name: tcpdump 
+
+  # Gnome/Desktop Environment
+  - name: caffeine # Tool to ignore screensaver (for youtube/vlc etc)
+  - name: dconf-cli # Tool to backup/load gnome settings
+  - name: gnome-shell # Used to modify gnome settings via CLI 
+  - name: gnome-tweaks # Used to modify gnome desktop
+  - name: gnome-tweak-tool # GUI for gnome tweaks
+  - name: gnome-shell-extensions # Used to modify gnome shell
+  - name: dconf-editor # Used to modify additional gnome settings
+  - name: gnome-software-plugin-flatpak # Flatpak support for gnome
+  - name: chrome-gnome-shell # Extension for browsing via Chrome
+  - name: ulauncher # Launcher for Linux
+  - name: gir1.2-gtop-2.0 # Requirement for Vitals plugin
+  - name: lm-sensors # Requirement for Vitals plugin
+
+
+  # Battery Management
+  - name: laptop-mode-tools # Tools for battery performance
+  - name: powertop # Find battery draining applications 
+  - name: tlp # Optimize Battery Life - Runs in background automatically
+  - name: tlp-rdw # 
+  
+  # Themes 
+  - name: arc-theme 
+  - name: numix-gtk-theme
+  - name: numix-icon-theme-circle
+  - name: papirus-icon-theme
+
+
+pip_packages:
+  - name: pip
+    state: latest
+  - name: setuptools
+    state: latest
+  - name: wheel
+  - name: pyyaml
+
+# System Cleanup
+# Uninstalls unnecessary packages such as games etc
+apt_package_removal:
+  - cowsay
+  - exim4
+  - exim4-base
+  - exim4-config
+  - gnome-mahjongg
+  - gnome-mines
+  - gnome-sudoku
+  - account-plugin-aim  
+  - account-plugin-facebook  
+  - account-plugin-flickr  
+  - account-plugin-jabber  
+  - account-plugin-salut  
+  - account-plugin-yahoo  

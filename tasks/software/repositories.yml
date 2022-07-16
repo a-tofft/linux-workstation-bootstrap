@@ -1,0 +1,28 @@
+---
+
+- name: software | add repository keys
+  become: true
+  apt_key:
+    url: "{{ item.name }}"
+    state: present
+    validate_certs: "{{ item.validate | default('true') }}"
+  with_items: "{{ repository_keys }}"
+  when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+
+- name: software | add repositories
+  become: true
+  apt_repository:
+    repo: "{{ item.name }}"
+    state: present
+    validate_certs: "{{ item.validate | default('true') }}"
+  with_items: "{{ essential_repositories }}"
+  register: repositories_updated
+
+- name: Update apt cache if repos were added.
+  become: true
+  apt:
+    update_cache: true
+  when: repositories_updated.changed
+
+
+  

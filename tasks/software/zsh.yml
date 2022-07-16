@@ -1,0 +1,29 @@
+---
+
+- name: install apt dependencies
+  apt:
+    name: zsh
+    state: present
+
+- name: Clone oh-my-zsh for user {{ ansible_user }}
+  git:
+    repo: "https://github.com/robbyrussell/oh-my-zsh"
+    dest: "~{{ ansible_user }}/.oh-my-zsh"
+
+- name: set permissions for user {{ ansible_user }}
+  file:
+    path: "~{{ ansible_user }}/.oh-my-zsh"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: Make zsh default shell for user {{ ansible_user }}
+  user:
+    name: "{{ ansible_user }}"
+    shell: /bin/zsh
+
+- name: add zsh plugins {{ ansible_user }}
+  git:
+    repo: "{{ item.repo }}"
+    dest: "~{{ ansible_user }}/.oh-my-zsh/plugins/{{ item.name }}"
+  with_items: "{{ zsh_plugins }}"

@@ -1,0 +1,23 @@
+---
+
+- name: Import Google Chrome GPG signing key
+  apt_key:
+    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+    state: present
+    id: 7FAC5991
+
+- name: software | google-chrome | install package
+  apt:
+    name: google-chrome-stable
+  when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+  register: google_chrome_install
+
+- name: Set Google Chrome as default browser
+  become: false
+  raw: xdg-settings set default-web-browser google-chrome.desktop
+  when: google_chrome_install is changed
+
+- name: Create Google Chrome extensions directory
+  file:
+    path: /opt/google/chrome/extensions/
+    state: directory
