@@ -150,7 +150,8 @@ apt_extra_packages:
   - name: unrar # For rar files
   - name: pandoc # File converter, example: md to pdf
   - name: inxi # Hardware Diagnostic Tool 
-
+  - name: conky-all # System Monitor Software
+  
   # Fonts 
   - name: fonts-powerline # Required for oh-my-zsh
 
