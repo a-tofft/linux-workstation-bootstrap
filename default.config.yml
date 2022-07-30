@@ -52,16 +52,17 @@ hourly_crontabs:
 configure_flatpak: true
 flatpaks:
   - "com.github.tchx84.Flatseal"  # Manage Flatpak permissions
-  - "org.gabmus.whatip"  # Info on your IP
-  - "com.bitwarden.desktop"  # A secure and free password manager for all of your devices
-  - "org.libreoffice.LibreOffice" # LibreOffice
-  - "org.videolan.VLC" # Playing Videos 
-  - "md.obsidian.Obsidian" # Note taking
-  - "org.remmina.Remmina" # RDP 
-  - "org.qbittorrent.qBittorrent" # Torrenting
-  - "com.meetfranz.Franz" # Messaging Platform
-  - "io.github.mimbrero.WhatsAppDesktop" # Messaging
-
+  - "org.gabmus.whatip"                         # Info on your IP
+  - "com.bitwarden.desktop"                     # A secure and free password manager for all of your devices
+  - "org.libreoffice.LibreOffice"               # LibreOffice
+  - "org.videolan.VLC"                          # Playing Videos 
+  - "md.obsidian.Obsidian"                      # Note taking
+  - "org.remmina.Remmina"                       # RDP 
+  - "org.qbittorrent.qBittorrent"               # Torrenting
+  - "com.meetfranz.Franz"                       # Messaging Platform
+  - "io.github.mimbrero.WhatsAppDesktop"        # Messaging
+  - "com.getpostman.Postman"                    # API Development 
+  - "me.hyliu.fluentreader"                     # RSS Reader
 # ---------------------------------------
 # SNAPS
 configure_snap: true
