@@ -54,6 +54,10 @@
     - import_tasks: tasks/software/snap-packages.yml
       tags: ['snap-packages']
 
+    # Download & Stow Dotfiles
+    - import_tasks: tasks/system-setup/dotfiles.yml
+      tags: ['dotfiles']
+
     # Install PIPs
     - import_tasks: tasks/software/pip-packages.yml
       tags: ['pip-packages']

@@ -1,0 +1,15 @@
+---
+
+- name: Make sure stow is installed and present
+  apt:
+    name: stow
+    state: present
+
+- name: Clone dotfiles repository for  {{ ansible_user }}
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "~{{ ansible_user }}/.dotfiles"
+
+- name: Run stow to symlink dotfiles
+  ansible.builtin.shell: cd ~/.dotfiles && stow -t ~ */
+

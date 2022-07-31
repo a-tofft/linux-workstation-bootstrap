@@ -3,7 +3,7 @@
 Repository to assist in bootstraping my Linux (Ubuntu) workstation and to take the headache away from remembering to install everything. It will perform the following tasks:
  - Update system
  - Install desired apt/snaps/flatpaks
- - Download dotfiles
+ - Download dotfiles & Symlink via Stow (github.com:a-tofft/dotfiles)
 
 ## Screenshot Preview
 ![Screenshot](screenshot.png)
@@ -72,11 +72,3 @@ dconf load / < ~/Dropbox/Backups/$(hostname)/dconf-settings
 Contains data that does not need to be provisioned 
  - VisualStudioCode Settings/Extensions 
  - GoogleChrome Settings/Extensions 
-
-# Dotfiles Installation:
-GNU Stow is used for dotfile management and dotfiles are kept in a separate repo
-```shell
-$ git clone git@github.com:a-tofft/dotfiles.git ~/.dotfiles
-$ cd ~/.dotfiles
-$ stow -t ~ */
-```

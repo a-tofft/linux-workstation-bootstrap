@@ -45,6 +45,10 @@ hourly_crontabs:
  - name: "Backup Gnome Shell Extensions every hour"
    job: "cp -r ~/.local/share/gnome-shell/extensions/* ~/Dropbox/Backups/gnome/shell-extensions 2>&1"
 
+# ---------------------------------------
+# Dotfiles 
+
+dotfiles_repo: "https://github.com/a-tofft/dotfiles"
 
 # ---------------------------------------
 # FLATPAKS
@@ -65,6 +69,7 @@ flatpaks:
   - "me.hyliu.fluentreader"                     # RSS Reader
 # ---------------------------------------
 # SNAPS
+
 configure_snap: true
 snaps:
   - name: "spotify" # Music, flatpak com.spotify.Client is causing issues. 
@@ -74,6 +79,8 @@ snaps:
   - name: "flameshot"  # Simple screenshot software
     classic: "yes"
   - name: "auto-cpufreq"
+  - name: "starship" # Shell Prompt
+
 # ---------------------------------------
 # BROWSER
 configure_google_chrome: true 
@@ -154,7 +161,7 @@ apt_extra_packages:
   - name: conky-all # System Monitor Software
   
   # Fonts 
-  - name: fonts-powerline # Fonts for oh-my-zsh/spaceship
+  - name: fonts-powerline # Fonts for oh-my-zsh/starship
   - name: fonts-firacode # As above
 
   # Chat Programs 
