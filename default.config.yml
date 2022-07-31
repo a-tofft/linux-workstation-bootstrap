@@ -154,7 +154,8 @@ apt_extra_packages:
   - name: conky-all # System Monitor Software
   
   # Fonts 
-  - name: fonts-powerline # Required for oh-my-zsh
+  - name: fonts-powerline # Fonts for oh-my-zsh/spaceship
+  - name: fonts-firacode # As above
 
   # Chat Programs 
   - name: telegram-desktop
