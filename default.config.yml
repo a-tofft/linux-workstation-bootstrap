@@ -67,6 +67,7 @@ flatpaks:
   - "io.github.mimbrero.WhatsAppDesktop"        # Messaging
   - "com.getpostman.Postman"                    # API Development 
   - "me.hyliu.fluentreader"                     # RSS Reader
+
 # ---------------------------------------
 # SNAPS
 
