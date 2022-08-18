@@ -218,7 +218,9 @@ pip_packages:
     state: latest
   - name: wheel
   - name: pyyaml
-
+  - name: black 
+  - name: isort 
+  
 # System Cleanup
 # Uninstalls unnecessary packages such as games etc
 apt_package_removal:
