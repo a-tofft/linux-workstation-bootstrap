@@ -55,7 +55,7 @@ dotfiles_repo: "https://github.com/a-tofft/dotfiles"
 
 configure_flatpak: true
 flatpaks:
-  - "com.github.tchx84.Flatseal"  # Manage Flatpak permissions
+  - "com.github.tchx84.Flatseal"                # Manage Flatpak permissions
   - "org.gabmus.whatip"                         # Info on your IP
   - "com.bitwarden.desktop"                     # A secure and free password manager for all of your devices
   - "org.libreoffice.LibreOffice"               # LibreOffice
@@ -63,7 +63,6 @@ flatpaks:
   - "md.obsidian.Obsidian"                      # Note taking
   - "org.remmina.Remmina"                       # RDP 
   - "org.qbittorrent.qBittorrent"               # Torrenting
-  - "com.meetfranz.Franz"                       # Messaging Platform
   - "io.github.mimbrero.WhatsAppDesktop"        # Messaging
   - "com.getpostman.Postman"                    # API Development 
   - "me.hyliu.fluentreader"                     # RSS Reader
@@ -73,14 +72,15 @@ flatpaks:
 
 configure_snap: true
 snaps:
-  - name: "spotify" # Music, flatpak com.spotify.Client is causing issues. 
-  - name: "authy"  # 2-Factor Authentication
-  - name: "code" # StudioVisualCode 
+  - name: "spotify"                             # Music, flatpak com.spotify.Client is causing issues. 
+  - name: "authy"                               # 2-Factor Authentication
+  - name: "code"                                # StudioVisualCode 
     classic: "yes"
-  - name: "flameshot"  # Simple screenshot software
+  - name: "flameshot"                           # Simple screenshot software
     classic: "yes"
   - name: "auto-cpufreq"
-  - name: "starship" # Shell Prompt
+  - name: "starship"                            # Shell Prompt
+  - name: "ferdi"                               # Messaging Platform 
 
 # ---------------------------------------
 # BROWSER
