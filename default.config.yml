@@ -182,7 +182,8 @@ apt_extra_packages:
   - name: wireshark 
   - name: tshark # Wireshark CLI 
   - name: tcpdump 
-
+  - name: nordvpn # VPN
+  
   # Gnome/Desktop Environment
   - name: caffeine # Tool to ignore screensaver (for youtube/vlc etc)
   - name: dconf-cli # Tool to backup/load gnome settings
