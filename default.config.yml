@@ -66,6 +66,7 @@ flatpaks:
   - "io.github.mimbrero.WhatsAppDesktop"        # Messaging
   - "com.getpostman.Postman"                    # API Development 
   - "me.hyliu.fluentreader"                     # RSS Reader
+  - "com.rafaelmardojai.Blanket"                # White noise program
 
 # ---------------------------------------
 # SNAPS
@@ -160,7 +161,7 @@ apt_extra_packages:
   - name: pandoc # File converter, example: md to pdf
   - name: inxi # Hardware Diagnostic Tool 
   - name: conky-all # System Monitor Software
-  - name: libheif-examples # Library for converting heif images 
+  - name: libheif-examples # Library for converting heif images
     
   # Fonts 
   - name: fonts-powerline # Fonts for oh-my-zsh/starship
