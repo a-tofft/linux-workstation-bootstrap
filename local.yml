@@ -34,6 +34,11 @@
       tags: ['zsh']
       when: configure_zsh
 
+    # Install Ruby & Gems
+    - import_tasks: tasks/software/ruby.yml
+      tags: ['software-ruby']
+      when: install_ruby
+
     # Install Additional Fonts
     - import_tasks: tasks/system-setup/fonts.yml
     - tags: ['fonts']

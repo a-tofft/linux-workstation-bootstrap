@@ -85,6 +85,21 @@ snaps:
 
 # ---------------------------------------
 # BROWSER
+
+install_ruby: true
+gem_packages: 
+# - name: bundler
+#   state: present # present/absent/latest, default: present
+#   version: "~> 1.15.1" # default: N/A
+ - name: bundler
+   state: present
+ - name: jekyll
+   state: present 
+ - name: jemoji 
+   state: present
+
+# ---------------------------------------
+# BROWSER
 configure_google_chrome: true 
 
 # ---------------------------------------
@@ -238,4 +253,4 @@ apt_package_removal:
   - account-plugin-flickr  
   - account-plugin-jabber  
   - account-plugin-salut  
-  - account-plugin-yahoo  
+  - account-plugin-yahoo

@@ -1,0 +1,21 @@
+---
+- name: Install Ruby Dependencies
+  become: true
+  apt:
+    name: "zlib1g-dev"
+    state: present
+
+- name: Install Ruby
+  become: true
+  apt:
+    name: "ruby-full"
+    state: present
+
+- name: Install global Ruby gems.
+  gem:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    version: "{{ item.version | default(omit) }}"
+    user_install: false
+    executable: "{{ item.executable | default(omit) }}"
+  with_items: "{{ gem_packages }}"
