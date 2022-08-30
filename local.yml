@@ -54,6 +54,10 @@
     - import_tasks: tasks/software/snap-packages.yml
       tags: ['snap-packages']
 
+    # Setup NordVPN
+    - import_tasks: tasks/software/nordvpn.yml
+      tags: ['setup-nordvpn']
+
     # Download & Stow Dotfiles
     - import_tasks: tasks/system-setup/dotfiles.yml
       tags: ['dotfiles']
