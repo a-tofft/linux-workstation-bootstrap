@@ -177,7 +177,8 @@ apt_extra_packages:
   - name: inxi # Hardware Diagnostic Tool 
   - name: conky-all # System Monitor Software
   - name: libheif-examples # Library for converting heif images
-    
+  - name: sysstat          # sar System Activity Report, Diagnostics
+     
   # Fonts 
   - name: fonts-powerline # Fonts for oh-my-zsh/starship
   - name: fonts-firacode # As above
