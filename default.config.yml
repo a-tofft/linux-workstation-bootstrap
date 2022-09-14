@@ -82,9 +82,10 @@ snaps:
   - name: "auto-cpufreq"
   - name: "starship"                            # Shell Prompt
   - name: "ferdi"                               # Messaging Platform 
-
+  - name: "postman"                             # API Development
+  
 # ---------------------------------------
-# BROWSER
+# RUBY
 
 install_ruby: true
 gem_packages: 
