@@ -1,0 +1,42 @@
+---
+
+# ---------------------------------------
+# SHELL 
+
+# Will download oh-my-zsh, make it default shell 
+# Will download extensions
+configure_zsh: true 
+zsh_plugins:
+ - name: zsh-syntax-highlighting
+   repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+ - name: zsh-autosuggestions
+   repo: https://github.com/zsh-users/zsh-autosuggestions.git
+
+# ---------------------------------------
+# PIP PACKAGES
+
+pip_packages:
+  - name: pip
+    state: latest
+  - name: setuptools
+    state: latest
+  - name: wheel
+  - name: pyyaml
+  - name: black                     # Linting
+  - name: isort                     # Linting
+
+
+# ---------------------------------------
+# RUBY
+
+install_ruby: true
+gem_packages: 
+# - name: bundler
+#   state: present # present/absent/latest, default: present
+#   version: "~> 1.15.1" # default: N/A
+ - name: bundler
+   state: present
+ - name: jekyll
+   state: present 
+ - name: jemoji 
+   state: present

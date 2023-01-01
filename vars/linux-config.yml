@@ -12,8 +12,8 @@ repository_keys:
    validate: false
 
 essential_repositories:
- - name: "ppa:caffeine-developers/ppa" # For caffeine
-   validate: false
+ #- name: "ppa:caffeine-developers/ppa" # For caffeine
+ #  validate: false
  - name: "ppa:agornostal/ulauncher" # For ulauncher
    validate: false
 
@@ -39,16 +39,12 @@ wifi_powersave_mode: '2'  # disable powersave
 
 # ---------------------------------------
 # CronJobs 
-hourly_crontabs: 
- - name: "Full Gnome settings backup every hour"
-   job: "dconf dump / > ~/Dropbox/Backups/gnome/dconf-settings 2>&1"
- - name: "Backup Gnome Shell Extensions every hour"
-   job: "cp -r ~/.local/share/gnome-shell/extensions/* ~/Dropbox/Backups/gnome/shell-extensions 2>&1"
+hourly_crontabs: []
+# - name: "Full Gnome settings backup every hour"
+#   job: "dconf dump / > ~/Dropbox/Backups/gnome/dconf-settings 2>&1"
+# - name: "Backup Gnome Shell Extensions every hour"
+#   job: "cp -r ~/.local/share/gnome-shell/extensions/* ~/Dropbox/Backups/gnome/shell-extensions 2>&1"
 
-# ---------------------------------------
-# Dotfiles 
-
-dotfiles_repo: "https://github.com/a-tofft/dotfiles"
 
 # ---------------------------------------
 # FLATPAKS
@@ -85,40 +81,12 @@ snaps:
   - name: "postman"                             # API Development
   
 # ---------------------------------------
-# RUBY
-
-install_ruby: true
-gem_packages: 
-# - name: bundler
-#   state: present # present/absent/latest, default: present
-#   version: "~> 1.15.1" # default: N/A
- - name: bundler
-   state: present
- - name: jekyll
-   state: present 
- - name: jemoji 
-   state: present
-
-# ---------------------------------------
 # BROWSER
 configure_google_chrome: true 
 
 # ---------------------------------------
 # BACKUP 
 configure_dropbox: true 
-
-# ---------------------------------------
-# SHELL 
-
-# Will download oh-my-zsh, make it default shell 
-# Will download extensions
-configure_zsh: true 
-zsh_plugins:
- - name: zsh-syntax-highlighting
-   repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
- - name: zsh-autosuggestions
-   repo: https://github.com/zsh-users/zsh-autosuggestions.git
-
 
 # ---------------------------------------
 
@@ -129,7 +97,7 @@ apt_base_packages:
 
   - name: apt-transport-https
   - name: ca-certificates
-  - name: curl # Tool to transfer data from server via HTTP/FTP for example. 
+  - name: curl                                  # Tool to transfer data from server via HTTP/FTP for example. 
   - name: gnupg-agent
   - name: software-properties-common
   - name: ssh
@@ -152,37 +120,37 @@ apt_extra_packages:
   - name: python3-pip
   - name: python3-venv
   - name: python3-pytest
-  - name: libpython3.9-dev
+  #- name: libpython3.9-dev
   - name: python-is-python3
 
 
   # Tools / Utilities
-  - name: tree # Display File Hierarchy
-  - name: jq # Format JSON output
-  - name: htop # CLI CPU Monitor Tool
-  - name: iotop # I/O bandwidth reader
-  - name: fd-find # Replace find 
-  - name: bat # replace cat 
-  - name: tldr # Like MAN 
-  - name: calibre # For managing books
-  - name: neofetch # Display System Information
-  - name: stacer # CPU/Disk/Memory/System GUI tool
-  - name: terminator # Terminal
-  - name: lsof # List of Open Files - Used to check what process use what file
-  - name: tmux # Terminal Multiplexer
-  - name: stow # Dotfiles/Symlink Management
-  - name: zsh # Shell
-  - name: youtube-dl # Downloads youtube videos
-  - name: unrar # For rar files
-  - name: pandoc # File converter, example: md to pdf
-  - name: inxi # Hardware Diagnostic Tool 
-  - name: conky-all # System Monitor Software
-  - name: libheif-examples # Library for converting heif images
-  - name: sysstat          # sar System Activity Report, Diagnostics
+  - name: tree                                  # Display File Hierarchy
+  - name: jq                                    # Format JSON output
+  - name: htop                                  # CLI CPU Monitor Tool
+  - name: iotop                                 # I/O bandwidth reader
+  - name: fd-find                               # Replace find 
+  - name: bat                                   # replace cat 
+  - name: tldr                                  # Like MAN 
+  - name: calibre                               # For managing books
+  - name: neofetch                              # Display System Information
+  - name: stacer                                # CPU/Disk/Memory/System GUI tool
+  - name: terminator                            # Terminal
+  - name: lsof                                  # List of Open Files - Used to check what process use what file
+  - name: tmux                                  # Terminal Multiplexer
+  - name: stow                                  # Dotfiles/Symlink Management
+  - name: zsh                                   # Shell
+  - name: youtube-dl                            # Downloads youtube videos
+  - name: unrar                                 # For rar files
+  - name: pandoc                                # File converter, example: md to pdf
+  - name: inxi                                  # Hardware Diagnostic Tool 
+  - name: conky-all                             # System Monitor Software
+  - name: libheif-examples                      # Library for converting heif images
+  - name: sysstat                               # sar System Activity Report, Diagnostics
      
   # Fonts 
-  - name: fonts-powerline # Fonts for oh-my-zsh/starship
-  - name: fonts-firacode # As above
+  - name: fonts-powerline                       # Fonts for oh-my-zsh/starship
+  - name: fonts-firacode                        # As above
 
   # Chat Programs 
   - name: telegram-desktop
@@ -191,54 +159,42 @@ apt_extra_packages:
   - name: docker.io 
 
   # Networking Tools
-  - name: snmp # SNMP tools including snmpwalk
-  - name: net-tools # Includes ifconfig/netstat/arp and nore
-  - name: nmap # NMAP tool for port/host scanning
-  - name: traceroute # Classic Traceroute Tool
-  - name: whois # RIPE/IANA, AS/PREFIX Lookup tool
-  - name: iperf # Bandwidth Testing Tool
+  - name: snmp                                  # SNMP tools including snmpwalk
+  - name: net-tools                             # Includes ifconfig/netstat/arp and nore
+  - name: nmap                                  # NMAP tool for port/host scanning
+  - name: traceroute                            # Classic Traceroute Tool
+  - name: whois                                 # RIPE/IANA, AS/PREFIX Lookup tool
+  - name: iperf                                 # Bandwidth Testing Tool
   - name: wireshark 
-  - name: tshark # Wireshark CLI 
+  - name: tshark                                # Wireshark CLI 
   - name: tcpdump 
-  - name: nordvpn # VPN
+  - name: nordvpn                               # VPN
   
   # Gnome/Desktop Environment
-  - name: caffeine # Tool to ignore screensaver (for youtube/vlc etc)
-  - name: dconf-cli # Tool to backup/load gnome settings
-  - name: gnome-shell # Used to modify gnome settings via CLI 
-  - name: gnome-tweaks # Used to modify gnome desktop
-  - name: gnome-tweak-tool # GUI for gnome tweaks
-  - name: gnome-shell-extensions # Used to modify gnome shell
-  - name: dconf-editor # Used to modify additional gnome settings
-  - name: gnome-software-plugin-flatpak # Flatpak support for gnome
-  - name: chrome-gnome-shell # Extension for browsing via Chrome
-  - name: ulauncher # Launcher for Linux
-  - name: gir1.2-gtop-2.0 # Requirement for Vitals plugin
-  - name: lm-sensors # Requirement for Vitals plugin
+  - name: caffeine                              # Tool to ignore screensaver (for youtube/vlc etc)
+  - name: dconf-cli                             # Tool to backup/load gnome settings
+  - name: gnome-shell                           # Used to modify gnome settings via CLI 
+  - name: gnome-tweaks                          # Used to modify gnome desktop
+  - name: gnome-shell-extensions                # Used to modify gnome shell
+  - name: dconf-editor                          # Used to modify additional gnome settings
+  - name: gnome-software-plugin-flatpak         # Flatpak support for gnome
+  - name: chrome-gnome-shell                    # Extension for browsing via Chrome
+  - name: ulauncher                             # Launcher for Linux
+  - name: gir1.2-gtop-2.0                       # Requirement for Vitals plugin
+  - name: lm-sensors                            # Requirement for Vitals plugin
 
 
   # Battery Management
-  - name: laptop-mode-tools # Tools for battery performance
-  - name: powertop # Find battery draining applications 
-  - name: tlp # Optimize Battery Life - Runs in background automatically
-  - name: tlp-rdw # 
+  - name: laptop-mode-tools                     # Tools for battery performance
+  - name: powertop                              # Find battery draining applications 
+  - name: tlp                                   # Optimize Battery Life - Runs in background automatically
+  - name: tlp-rdw                               # 
   
   # Themes 
   - name: arc-theme 
   - name: numix-gtk-theme
   - name: numix-icon-theme-circle
   - name: papirus-icon-theme
-
-
-pip_packages:
-  - name: pip
-    state: latest
-  - name: setuptools
-    state: latest
-  - name: wheel
-  - name: pyyaml
-  - name: black 
-  - name: isort 
   
 # System Cleanup
 # Uninstalls unnecessary packages such as games etc

@@ -1,9 +1,16 @@
 ---
 
-- name: install apt dependencies
+- name: install dependencies - Linux
   apt:
     name: zsh
     state: present
+  when: ansible_os_family == 'Debian'
+
+- name: install dependencies - MAC
+  homebrew:
+    name: zsh
+    state: present
+  when: ansible_os_family == 'Darwin'
 
 - name: Clone oh-my-zsh for user {{ ansible_user }}
   git:

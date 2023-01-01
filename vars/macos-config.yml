@@ -1,0 +1,128 @@
+---
+
+# Extends packages you can install
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+
+  - homebrew/cask-drivers
+  - homebrew/cask-fonts
+
+
+
+# HOMEBREW CASK (MAC BASED APPS)
+homebrew_cask_packages:
+  - name: bitwarden                   # Password Manager
+  - name: alfred                      # Launcher
+  - name: qbitorrent                  # Torrent Tool
+  - name: authy                       # 2FA authenticator
+  - name: nordvpn                     # VPN 
+  - name: iterm2                      # Terminal
+  - name: wireshark                   # Network Traffic Analyzer 
+
+  # Entertainment
+  - name: spotify                     # Music
+  - name: vlc                         # Videos
+
+  # Productivity
+  - name: obsidian                    # Notes 
+  - name: libreoffice                 # Office Suite 
+  - name: calibre                     # Calibre
+  
+  # Communication
+  - name: telegram                    # Communication
+  - name: whatsapp                    # Communication
+  - name: skype                       # Communication
+  - name: slack                       # Communication
+  - name: discord                     # Communication  
+
+  # Web Browsing
+  - name: google-chrome               # Browser
+  - name: firefox                     # Browser
+
+  # Backups
+  - name: dropbox
+  - name: google-drive
+
+
+  # Container & Virtualization
+  - name: docker
+  - name: vagrant                     # Virtual Machines
+  - name: vagrant-manager             # Virtual Machines
+
+  # Development
+  - name: visual-studio-code          # Development
+  - name: vmware-fusion
+  - name: postman                     # API Development
+  - name: royal-tsx                   # Remote Desktop & SSH Management
+
+
+  # UNDECIDED
+  # - name: transmit                   # File Transfers
+  # - name: tableplus
+  # - name: bartender                 # Better Taskbar for MacOS
+  # - name: dash                      # Offline API Documentation
+
+# HOMEBREW - STANDARD APPS
+homebrew_packages:
+  - name: starship                    # Shell Prompts
+
+  - name: zsh
+  - name: zsh-syntax-highlighting
+  - name: zsh-autosuggestions
+
+  - name: curl # Tool to transfer data from server via HTTP/FTP for example. 
+  - name: ssh
+  - name: wget
+  - name: openssl
+  - name: dos2unix
+  - name: gnu-sed
+  - name: less
+  - name: zip
+  - name: unzip
+  - name: git
+  - name: nano
+
+  # Development
+  - name: python3-setuptools
+  - name: python3-pip
+  - name: python3-venv
+  - name: python3-pytest
+
+  # Tools / Utilities
+  - name: tree                      # Display File Hierarchy
+  - name: jq                        # Format JSON output
+  - name: htop                      # CLI CPU Monitor Tool
+  - name: fd-find                   # Replace find 
+  - name: bat                       # replace cat 
+  - name: tldr                      # Like MAN 
+  - name: neofetch                  # Display System Information
+  - name: lsof                      # List of Open Files - Used to check what process use what file
+  - name: stow                      # Dotfiles/Symlink Management
+  - name: youtube-dl                # Downloads youtube videos
+  - name: unrar                     # For rar files
+  - name: pandoc                    # File converter, example: md to pdf
+  - name: inxi                      # Hardware Diagnostic Tool 
+  - name: sysstat                   # sar System Activity Report, Diagnostics
+     
+  # Fonts 
+  - name: powerline-go              # Fonts for oh-my-zsh/starship
+
+  # Containers 
+  - name: docker
+  - name: docker-compose
+
+  # Networking Tools
+  - name: net-snmp                  # SNMP tools including snmpwalk
+  - name: net-tools                 # Includes ifconfig/netstat/arp and nore
+  - name: nmap                      # NMAP tool for port/host scanning
+  - name: traceroute                # Classic Traceroute Tool
+  - name: whois                     # RIPE/IANA, AS/PREFIX Lookup tool
+  - name: iperf                     # Bandwidth Testing Tool
+  - name: tshark                    # Wireshark CLI 
+  - name: tcpdump 
+
+
+# MAC APPLE STORE
+mas_apps:
+  - { name: Pages, id: 409201541 }

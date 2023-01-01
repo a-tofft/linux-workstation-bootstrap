@@ -1,7 +1,8 @@
 # tasks to complete before running roles
 - hosts: all # Connection Local
   vars_files:
-    - default.config.yml
+    - vars/common.yml
+    - vars/linux-config.yml
   tags: always
   become: true
   pre_tasks:
@@ -41,7 +42,7 @@
 
     # Install Additional Fonts
     - import_tasks: tasks/system-setup/fonts.yml
-    - tags: ['fonts']
+      tags: ['fonts']
 
     # Setup Gnome Appearance
     - import_tasks: tasks/gnome/appearance.yml
@@ -62,10 +63,6 @@
     # Setup NordVPN
     - import_tasks: tasks/software/nordvpn.yml
       tags: ['setup-nordvpn']
-
-    # Download & Stow Dotfiles
-    - import_tasks: tasks/system-setup/dotfiles.yml
-      tags: ['dotfiles']
 
     # Install PIPs
     - import_tasks: tasks/software/pip-packages.yml

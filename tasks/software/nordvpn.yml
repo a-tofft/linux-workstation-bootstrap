@@ -1,5 +1,4 @@
- ---
-
+---
 - name: Add "nordvpn" group to user
   ansible.builtin.user:
     name: "{{ ansible_user }}"
